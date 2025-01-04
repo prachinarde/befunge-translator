@@ -1,3 +1,7 @@
+const fs = require('fs');
+
+// Define the content of the README.md file
+const readmeContent = `
 # Befunge Translation API
 
 This project is a Node.js-based Express application that translates JavaScript code into Befunge-93 code using the OpenAI API. It provides an HTTP endpoint to accept JavaScript code as input and returns its Befunge-93 equivalent.
@@ -22,47 +26,47 @@ This project is a Node.js-based Express application that translates JavaScript c
 ## Installation
 
 1. Clone the repository:
-   ```bash
+   \`\`\`bash
    git clone <repository_url>
    cd <repository_directory>
-   ```
+   \`\`\`
 
 2. Install dependencies:
-   ```bash
+   \`\`\`bash
    npm install
-   ```
+   \`\`\`
 
-3. Create a `.env` file in the root directory and add your OpenAI API key:
-   ```env
+3. Create a \`.env\` file in the root directory and add your OpenAI API key:
+   \`\`\`env
    OPENAI_API_KEY=your_openai_api_key_here
-   ```
+   \`\`\`
 
 4. Start the server:
-   ```bash
+   \`\`\`bash
    node index.js
-   ```
+   \`\`\`
 
-5. The server will be running at `http://localhost:4000`.
+5. The server will be running at \`http://localhost:4000\`.
 
 ---
 
 ## API Endpoints
 
 ### 1. Translate JavaScript to Befunge
-   **Endpoint**: `/translate`  
-   **Method**: `POST`  
+   **Endpoint**: \`/translate\`  
+   **Method**: \`POST\`  
    **Request Body**:
-   ```json
+   \`\`\`json
    {
      "input": "console.log('Hello, World!');"
    }
-   ```
+   \`\`\`
    **Response**:
-   ```json
+   \`\`\`json
    {
-     "befungeCode": ">25*\"!dlrow ,olleH\":v\n                  v:,_@\n                  >  ^"
+     "befungeCode": ">25*\\"!dlrow ,olleH\\":v\\n                  v:,_@\\n                  >  ^"
    }
-   ```
+   \`\`\`
 
 ### Error Responses
 
@@ -73,19 +77,19 @@ This project is a Node.js-based Express application that translates JavaScript c
 
 ## Example Usage
 
-### Using `curl`
-```bash
-curl -X POST http://localhost:4000/translate \
--H "Content-Type: application/json" \
--d '{"input": "console.log(\"Hello, World!\");"}'
-```
+### Using \`curl\`
+\`\`\`bash
+curl -X POST http://localhost:4000/translate \\
+-H "Content-Type: application/json" \\
+-d '{"input": "console.log(\\"Hello, World!\\");"}'
+\`\`\`
 
 ### Response
-```json
+\`\`\`json
 {
-  "befungeCode": ">25*\"!dlrow ,olleH\":v\n                  v:,_@\n                  >  ^"
+  "befungeCode": ">25*\\"!dlrow ,olleH\\":v\\n                  v:,_@\\n                  >  ^"
 }
-```
+\`\`\`
 
 ---
 
@@ -120,3 +124,13 @@ Contributions are welcome! Follow these steps to contribute:
 - Befunge for inspiring esoteric programming enthusiasts.
 
 Happy coding! 🚀
+`;
+
+// Write the content to a README.md file
+fs.writeFile('README.md', readmeContent.trim(), (err) => {
+  if (err) {
+    console.error('Error writing README.md:', err);
+  } else {
+    console.log('README.md file created successfully!');
+  }
+});
